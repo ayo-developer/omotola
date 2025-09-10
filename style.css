@@ -1,0 +1,382 @@
+/* General Styling */
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+/* Celebration Popup */
+#popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 182, 193, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.popup-box {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+}
+
+.popup-box h2 {
+    color: #ff4081;
+}
+
+.popup-box button {
+    background: #ff7eb3;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 30px;
+    font-size: 1rem;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 118, 160, 0.4);
+    transition: transform 0.2s;
+}
+
+.popup-box button:hover {
+    transform: scale(1.1);
+}
+
+/* Surprise Message Popup */
+#messagePopup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 192, 203, 0.95);
+    display: none;
+    /* hidden until shown */
+    justify-content: center;
+    align-items: center;
+    z-index: 998;
+    animation: fadeIn 1s ease forwards;
+}
+
+.message-box {
+    background: #fff;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
+}
+
+.message-box h2 {
+    color: #e91e63;
+    margin-bottom: 15px;
+}
+
+.message-box p {
+    font-size: 1.2rem;
+    color: #444;
+    margin-bottom: 20px;
+}
+
+.message-box button {
+    background: #e91e63;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-size: 1rem;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.message-box button:hover {
+    transform: scale(1.1);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Container */
+.container {
+    text-align: center;
+    z-index: 10;
+    position: relative;
+}
+
+/* Glow Effect */
+.glow {
+    font-size: 3rem;
+    color: #fff;
+    text-shadow: 0 0 20px #ff7eb3, 0 0 30px #ff758c, 0 0 40px #ff5277;
+    animation: glowPulse 2s infinite alternate;
+}
+
+@keyframes glowPulse {
+    from {
+        text-shadow: 0 0 10px #ff7eb3, 0 0 20px #ff758c;
+    }
+
+    to {
+        text-shadow: 0 0 30px #ff5277, 0 0 60px #ff1744;
+    }
+}
+
+/* Name */
+.name {
+    font-size: 2rem;
+    color: #fff3f3;
+    margin: 10px 0;
+}
+
+/* Wish */
+.wish {
+    font-size: 1.2rem;
+    color: #fff;
+    margin: 15px 0 25px;
+}
+
+/* Slideshow */
+.slideshow {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    max-width: 600px;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.slideshow img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+    border-radius: 20px;
+}
+
+.slideshow img.active {
+    opacity: 1;
+}
+
+/* Balloons */
+.balloon {
+    width: 60px;
+    height: 80px;
+    background: radial-gradient(circle at 30% 30%, #ff7eb3, #ff1744);
+    border-radius: 50% 50% 45% 45%;
+    position: absolute;
+    bottom: -100px;
+    animation: float 10s linear infinite;
+    left: calc(20% * var(--i));
+}
+
+.balloon::after {
+    content: "";
+    width: 2px;
+    height: 100px;
+    background: white;
+    position: absolute;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    100% {
+        transform: translateY(-120vh) rotate(360deg);
+    }
+}
+
+/* Confetti Canvas */
+#confetti {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.confetti-piece {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #ff4081;
+    opacity: 0.7;
+    animation: confettiFall 3s linear infinite;
+}
+
+/* Personalized Message Popup */
+#messagePopup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 192, 203, 0.8);
+    display: none;
+    /* hidden by default */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 2s ease forwards;
+}
+
+.message-box {
+    background: white;
+    padding: 25px 35px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    animation: popIn 1s ease forwards;
+}
+
+/* Sparkles Effect */
+.sparkles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.sparkles::before,
+.sparkles::after {
+    content: "✨";
+    position: absolute;
+    font-size: 1.2rem;
+    animation: sparkle 2s infinite ease-in-out;
+    color: #ff69b4;
+}
+
+.sparkles::before {
+    top: -10px;
+    left: 20%;
+    animation-delay: 0.5s;
+}
+
+.sparkles::after {
+    bottom: -10px;
+    right: 25%;
+    animation-delay: 1s;
+}
+
+@keyframes sparkle {
+
+    0%,
+    100% {
+        opacity: 0;
+        transform: scale(0.5) rotate(0deg);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.2) rotate(180deg);
+    }
+}
+
+.message-box h2 {
+    color: #ff4081;
+    margin-bottom: 10px;
+}
+
+.message-box p {
+    font-size: 1.2rem;
+    color: #444;
+    line-height: 1.6;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes popIn {
+    from {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes confettiFall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Fade Out Animation for Message Popup */
+.fadeOut {
+    animation: fadeOutAnim 0.8s forwards;
+}
+
+@keyframes fadeOutAnim {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+/* Responsive Design */
+@media (max-width: 600px) {
+    .glow {
+        font-size: 2rem;
+    }
+
+    .name {
+        font-size: 1.5rem;
+    }
+
+    .wish {
+        font-size: 1rem;
+    }
+
+    .slideshow {
+        height: 200px;
+    }
+
+    .balloon {
+        width: 40px;
+        height: 60px;
+    }
+}
